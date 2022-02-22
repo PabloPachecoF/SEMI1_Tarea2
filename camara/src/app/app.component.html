@@ -1,0 +1,39 @@
+<body>
+  <div>
+    <div>
+      <table>
+        <tr>
+          <td>
+            <webcam [height]="1024" [width]="576" 
+            [trigger]="triggerObservable" 
+            (imageCapture)="handleImage($event)" *ngIf="verCam"
+            [videoOptions]="captura"
+            [imageQuality]="1"
+            (initError)="handleInitError($event)"
+            ></webcam>
+          </td>
+          <td>
+            <div *ngIf="webcamImage">
+              <img [src]="webcamImage.imageAsDataUrl"/>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- <button  (click)="tomarFoto();">TOMAR FOTO</button> -->
+            <h2>Pablo César Pacheco Fuentes</h2>
+            <h2>201602730</h2>
+          </td>
+          <td>
+            <!-- <button (click)="apagarCamara();">{{infoCamara}}</button> -->
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <h4 *ngIf="errors.length > 0">Messages:</h4>
+  <ul *ngFor="let error of errors">
+    <li>{{error | json}}</li>
+  </ul>
+</body>
